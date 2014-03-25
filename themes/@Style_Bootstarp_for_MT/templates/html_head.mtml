@@ -1,0 +1,51 @@
+<meta charset="<$mt:PublishCharset$>">
+<mt:Ignore><meta http-equiv="X-UA-Compatible" content="IE=edge"></mt:Ignore>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="<$mt:ProductName version="1"$>">
+
+<mt:Ignore>================ description ================</mt:Ignore>
+
+<mt:If name="entry_template">
+<meta name="description" content="<$mt:EntryExcerpt remove_html="1"$>">
+<mt:ElseIf name="category_archive">
+<meta name="description" content="<$mt:ArchiveTitle$> <$mt:CategoryDescription$>">
+<mt:ElseIf name="page_template">
+<meta name="description" content="<$mt:PageTitle$> <$mt:PageExcerpt remove_html="1"$>">
+<mt:ElseIf name="main_index"><mt:If tag="BlogDescription">
+<meta name="description" content="<$mt:BlogDescription$>">
+</mt:If><mt:Else>
+<meta name="description" content="<$mt:var name="page_title"$>">
+</mt:If>
+
+<mt:Ignore>================ /description ================</mt:Ignore>
+
+<mt:Ignore>================ CSS ================</mt:Ignore>
+
+<mt:Ignore> Bootstrap core CSS </mt:Ignore>
+<link rel="stylesheet" href="<$mt:Link template="bootstrap_min_css" encode_html="1"$>">
+
+<mt:Ignore> Custom styles for this template </mt:Ignore>
+<link rel="stylesheet" href="<$mt:Link template="blog_css" encode_html="1"$>">
+
+<mt:Ignore> Custom styles for Movable Type </mt:Ignore>
+<link rel="stylesheet" href="<$mt:Link template="custom_for_mt_css" encode_html="1"$>">
+
+<mt:Ignore>================ /CSS ================</mt:Ignore>
+
+<link rel="start" href="<$mt:BlogURL encode_html="1"$>" title="Home">
+<link rel="alternate" href="<$mt:Link template="feed_recent"$>" type="application/atom+xml" title="Recent Entries">
+
+<$mt:CanonicalLink replace=" /",""$>
+
+<mt:Ignore>================ JS ================</mt:Ignore>
+
+<mt:Ignore> HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries </mt:Ignore>
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<mt:Ignore>================ /JS ================</mt:Ignore>
+
+<$mt:CCLicenseRDF$>
+<$mt:StatsSnippet$>

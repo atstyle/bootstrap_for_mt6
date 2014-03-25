@@ -1,0 +1,51 @@
+
+<mt:IfPingsActive>
+<div id="trackbacks" class="trackbacks">
+
+<h4><$mt:EntryTrackbackCount singular="トラックバック(1)" plural="トラックバック(#)" none="トラックバック(0)"$></h4>
+
+<mt:IfPingsAccepted>
+<div class="trackbacks-info">
+<form class="form-horizontal">
+<div class="control-group">
+<label for="track-back-url" class="control-label">トラックバックURL</label>
+<div class="controls">
+<input type="text" class="span4 form-control" id="track-back-url" value="<$mt:EntryTrackbackLink$>" readonly="readonly">
+</div>
+</div>
+ </form>
+</div>
+</mt:IfPingsAccepted>
+
+<mt:Pings>
+
+<mt:PingsHeader>
+<div class="trackbacks-content">
+</mt:PingsHeader>
+
+<div class="trackback" id="ping-<$mt:PingID$>">
+<div class="inner">
+
+<div class="trackback-header">
+<div class="asset-meta">
+<$mt:PingBlogName$> - <a href="<$mt:PingURL$>"><$mt:PingTitle$></a> (<a href="#ping-<$mt:PingID$>"><$mt:PingDate$></a>)
+</div>
+</div>
+
+<div class="trackback-content">
+<p>
+<$mt:PingExcerpt$> <a href="<$mt:PingURL$>" class="btn btn-primary btn-xs">続きを読む</a>
+</p>
+</div>
+</div>
+</div>
+
+<mt:PingsFooter>
+</div>
+</mt:PingsFooter>
+</mt:Pings>
+
+</div>
+</mt:IfPingsActive>
+
+

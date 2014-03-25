@@ -1,0 +1,73 @@
+<mt:Unless regex_replace="/\s*\n+/g","\n">
+
+<!DOCTYPE html>
+<html lang="<$mt:BlogLanguage$>">
+<head>
+
+<$mt:include module="HTMLヘッダー"$>
+
+<!-- Open Graph Protocol -->
+<mt:IfArchiveType archive_type="Monthly">
+<meta property="og:title" content="<$mt:ArchiveLabel$>">
+<meta property="og:url" content="<$mt:ArchiveLink$>">
+<meta property="og:image" content="<$mt:BlogURL$>blogimg/og_image.png">
+<meta property="og:description" content="<$mt:BlogName$> <$mt:ArchiveLabel$>">
+</mt:IfArchiveType>
+
+<mt:ArchivePrevious><link rel="prev" href="<$mt:ArchiveLink$>" title="<$mt:ArchiveTitle encode_html="1"$>"></mt:ArchivePrevious>
+<mt:ArchiveNext><link rel="next" href="<$mt:ArchiveLink$>" title="<$mt:ArchiveTitle encode_html="1"$>"></mt:ArchiveNext>
+
+<title><$mt:ArchiveTitle$> Archive - <$mt:BlogName encode_html="1"$></title>
+
+</head>
+
+<body>
+
+<$mt:include module="バナーヘッダー"$>
+
+<main class="col-sm-8 blog-main" role="main">
+
+<mt:Ignore>===================パンくず========================</mt:Ignore>
+<ul class="breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+<li><a href="<mt:BlogParentWebsite><$mt:WebsiteURL$></mt:BlogParentWebsite>">Home</a></li>
+<li><$mt:ArchiveTitle$> Archive</li>
+</ul>
+<mt:Ignore>===================/ パンくず========================</mt:Ignore>
+
+<mt:Ignore>===================記事リスト========================</mt:Ignore>
+
+<mt:Entries>
+<mt:EntriesHeader>
+<section id="posts">
+<h1 class="blog-post-title"><$mt:ArchiveTitle$> Archive</h1>
+<dl class="dl-horizontal">
+  </mt:EntriesHeader>
+
+<dt><time datetime="<$mt:EntryDate format_name="iso8601"$>"><$mt:EntryDate format="%e"$>日</time></dt>
+<dd><a href="<$mt:EntryPermalink encode_html="1"$>"><$mt:EntryTitle$></a></dd>
+
+<mt:EntriesFooter>
+</dl>
+</section>
+</mt:EntriesFooter>
+</mt:Entries>
+
+<mt:Ignore>====================/ 記事リスト=======================</mt:Ignore>
+
+<aside>
+<ul class="pager">
+<mt:ArchivePrevious>
+<li class="previous"><a href="<$mt:ArchiveLink encode_html="1"$>" title="<$mt:ArchiveTitle$>"><$mt:ArchiveTitle$></a></li>
+</mt:ArchivePrevious>
+<mt:ArchiveNext>
+<li class="next"><a href="<$mt:ArchiveLink encode_html="1"$>" title="<$mt:ArchiveTitle$>"><$mt:ArchiveTitle$></a></li>
+</mt:ArchiveNext>
+</ul>
+</aside>
+
+</main><mt:Ignore> /.blog-main </mt:Ignore>
+
+<$mt:include module="バナーフッター"$>
+
+</body>
+</html></mt:Unless>

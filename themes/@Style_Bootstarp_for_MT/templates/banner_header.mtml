@@ -1,0 +1,25 @@
+<div class="blog-masthead">
+<div class="container">
+
+<nav class="blog-nav" role="navigation">
+<a href="<$mt:BlogURL$>" class="blog-nav-item">Home</a>
+<mt:Pages tag="@about">
+<a href="<$mt:PagePermalink$>" class="blog-nav-item"><$mt:PageTitle$></a>
+</mt:Pages>
+<mt:Pages tag="@ADD_TO_SITE_NAV">
+<a href="<$mt:PagePermalink encode_html="1"$>"><$mt:PageTitle$></a>
+</mt:Pages>
+<a href="<$mt:Link template="最新記事のフィード"$>" class="blog-nav-item">Feed</a>
+</nav>
+
+</div>
+</div>
+
+<div class="container">
+
+<header class="blog-header" role="banner">
+<h1 class="blog-title"><$mt:BlogName encode_html="1"$></h1>
+<p class="lead blog-description"><$mt:BlogDescription$></p>
+</header>
+
+<div class="row">

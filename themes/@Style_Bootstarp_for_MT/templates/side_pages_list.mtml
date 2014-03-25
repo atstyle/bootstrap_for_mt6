@@ -1,0 +1,24 @@
+<mt:IfArchiveTypeEnabled archive_type="Page">
+<div class="sidebar-module">
+<h4>Pages</h4>
+<ol class="list-unstyled">
+<mt:Pages no_folder="1" sort_by="title" sort_order="ascend">
+<li class="page page-<$mt:PageID$>"><a href="<$mt:PagePermalink$>"><$mt:PageTitle$></a></li>
+</mt:Pages>
+<mt:TopLevelFolders>
+<li class="folder_label"><$mt:FolderLabel$>
+<mt:Pages sort_by="title" sort_order="ascend">
+<mt:PagesHeader>
+<ol class="list-unstyled">
+</mt:PagesHeader>
+<li><a href="<$mt:PagePermalink$>"><$mt:PageTitle$></a></li>
+<mt:PagesFooter>
+</ol>
+</mt:PagesFooter>
+</mt:Pages>
+</li>
+<$mt:SubFolderRecurse$>
+</mt:TopLevelFolders>
+</ol>
+</div>
+</mt:IfArchiveTypeEnabled>

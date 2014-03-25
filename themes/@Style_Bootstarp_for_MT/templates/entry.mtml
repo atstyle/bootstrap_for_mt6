@@ -1,0 +1,118 @@
+<!DOCTYPE html><mt:Unless regex_replace="/\s*\n+/g","\n">
+<html lang="<$mt:BlogLanguage$>" itemscope itemtype="http://schema.org/Article">
+<head>
+
+<$mt:Include module="HTMLヘッダー"$>
+
+<$mt:Var name="comments_per_page" value="50"$>
+<mt:EntryPrevious><link rel="prev" href="<$mt:EntryPermalink$>" title="<$mt:EntryTitle encode_html="1"$>"></mt:EntryPrevious>
+<mt:EntryNext><link rel="next" href="<$mt:EntryPermalink$>" title="<$mt:EntryTitle encode_html="1"$>"></mt:EntryNext>
+
+<mt:If tag="EntryCommentCount" gt="$comments_per_page">
+<script type="text/javascript">
+MT.entryID = <$mt:EntryID$>;
+MT.commentsPerPage = <$mt:Var name="comments_per_page"$>;
+MT.entryCommentCount = <$mt:EntryCommentCount$>;
+MT.commentIds = [<mt:Comments sort_order="ascend" glue=","><mt:CommentID></mt:Comments>];
+</script>
+</mt:If>
+
+<!-- Open Graph Protocol -->
+<meta property="og:type" content="article">
+<meta property="og:locale" content="<$mt:BlogLanguage setvar="blog_lang"$><mt:If name="blog_lang" eq="ja">ja_JP<mt:else><$mt:Var name="blog_lang"$></mt:If>">
+<meta property="og:title" content="<$mt:EntryTitle encode_html="1"$>">
+<meta property="og:url" content="<$mt:EntryPermalink encode_html="1"$>">
+<meta property="og:description" content="<$mt:EntryExcerpt remove_html="1" encode_html="1"$>">
+<meta property="og:site_name" content="<$mt:BlogName encode_html="1"$>">
+<meta property="og:image" content="<mt:EntryAssets type="image" limit="1"><$mt:AssetThumbnailURL height="320" square="1" encode_html="1"$><mt:Else><mt:Assets type="image" tag="@SITE_ICON" limit="1"><$mt:AssetThumbnailURL height="320" square="1" encode_html="1"$><mt:Else><$mt:BlogURL$>blogimg/og_image.png</mt:Assets></mt:EntryAssets>">
+
+<!-- Metadata -->
+<meta itemprop="description" content="<$mt:EntryExcerpt remove_html="1"$>">
+<link itemprop="url" href="<$mt:EntryPermalink encode_html="1"$>">
+<link itemprop="image" href="<mt:EntryAssets type="image" limit="1"><$mt:AssetThumbnailURL height="320" square="1" encode_html="1"$><mt:Else><mt:Assets type="image" tag="@SITE_ICON" limit="1"><$mt:AssetThumbnailURL height="320" square="1" encode_html="1"$><mt:Else><$mt:BlogURL$>blogimg/og_image.png</mt:Assets></mt:EntryAssets>">
+<mt:IfCommentsActive><script src="<$mt:Link template="javascript"$>"></script></mt:IfCommentsActive>
+
+<title><$mt:EntryTitle encode_html="1"$> - <$mt:BlogName encode_html="1"$></title>
+
+</head>
+
+<body id="<$mt:BlogThemeID$>">
+
+<$mt:include module="バナーヘッダー"$>
+
+<main class="col-sm-8 blog-main" role="main">
+
+<mt:Ignore>===================パンくず========================</mt:Ignore>
+<ul class="breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+<li><a href="<$mt:WebsiteURL$>">Home</a></li>
+<mt:ParentCategories>
+<mt:IfNonZero tag="MTCategoryCount">
+<li><a href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel$></a></li>
+<mt:Else><li><$mt:CategoryLabel$></li></mt:Else>
+</mt:IfNonZero>
+</mt:ParentCategories>
+<li><$mt:EntryTitle$></li>
+</ul>
+<mt:Ignore>===================/ パンくず========================</mt:Ignore>
+
+<article id="entry-<$mt:EntryID$>" class="blog-post entry entry-asset asset hentry">
+<div class="asset-header">
+<h1 itemprop="name" class="blog-post-title entry-title"><$mt:EntryTitle$></h1>
+<footer class="asset-meta blog-post-meta">
+<ul class="asset-meta-list">
+<li class="asset-meta-list-item">投稿日:<time datetime="<$mt:EntryDate format_name="iso8601"$>" itemprop="datePublished"><$mt:EntryDate format="%x"$></time></li>
+<li class="asset-meta-list-item">更新日:<time datetime="<$mt:EntryModifiedDate format_name="iso8601"$>" itemprop="dateModified"><$mt:EntryModifiedDate format="%x"$></time></li>
+<li class="asset-meta-list-item">by <span class="author entry-author vcard"><$mt:EntryAuthorLink show_hcard="1"$></span></li>
+
+<mt:IfArchiveTypeEnabled archive_type="Category">
+<mt:If tag="EntryPrimaryCategory">
+<li class="asset-meta-list-item">Category: <mt:EntryPrimaryCategory><a itemprop="articleSection" rel="tag" href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel$></a></mt:EntryPrimaryCategory></li>
+</mt:If>
+</mt:IfArchiveTypeEnabled>
+</ul>
+</footer>
+</div>
+
+<mt:If tag="EntryBody">
+<div class="asset-body" itemprop="articleBody">
+<$mt:EntryBody replace="<br />","<br>" regex_replace="/<img([^>]+) \/>/g","<img$1>"$>
+</div>
+</mt:If>
+<mt:If tag="EntryMore" convert_breaks="0">
+<div id="more" class="asset-more">
+<$mt:EntryMore replace="<br />","<br>" regex_replace="/<img([^>]+) \/>/g","<img$1>"$>
+</div>
+</mt:If>
+
+<mt:EntryIfTagged>
+<div class="entry-tags">
+<h4 class="entry-tag-header">Tag</h4>
+<ul>
+<li><mt:EntryTags glue='</li> <li>'><a href="javascript:void(0)" onclick="location.href='<$mt:TagSearchLink encode_js="1"$>';return false;" rel="tag"><span class="label label-default"><$mt:TagName$></span></a></mt:EntryTags></li>
+</ul>
+</div>
+</mt:EntryIfTagged>
+
+<aside>
+<ul class="pager">
+<mt:EntryPrevious>
+<li class="previous"><a href="<$mt:EntryPermalink$>" title="「<$mt:EntryTitle encode_html="1"$>」のパーマリンク">前の記事</a></li>
+</mt:EntryPrevious>
+<mt:EntryNext>
+<li class="next"><a href="<$mt:EntryPermalink$>" title="「<$mt:EntryTitle encode_html="1"$>」のパーマリンク">次の記事</a></li>
+</mt:EntryNext>
+</ul>
+</aside>
+
+<$mt:Include module="Zenback"$>
+<$mt:Include module="トラックバック"$>
+<$mt:Include module="コメント"$>
+
+</article>
+
+</main><mt:Ignore> /.blog-main </mt:Ignore>
+
+<$mt:include module="バナーフッター"$>
+
+</body>
+</html></mt:Unless>

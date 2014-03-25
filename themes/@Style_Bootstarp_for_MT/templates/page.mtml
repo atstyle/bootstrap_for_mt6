@@ -1,0 +1,88 @@
+<mt:Unless regex_replace="/\s*\n+/g","\n">
+
+<!DOCTYPE html>
+<html lang="<$mt:BlogLanguage$>" itemscope itemtype="http://schema.org/WebPage">
+<head>
+
+<$mt:include module="HTMLヘッダー"$>
+
+<!-- Open Graph Protocol -->
+<meta property="og:type" content="article">
+<meta property="og:locale" content="<$mt:BlogLanguage setvar="blog_lang"$><mt:If name="blog_lang" eq="ja">ja_JP<mt:else><$mt:Var name="blog_lang"$></mt:If>">
+<meta property="og:title" content="<$mt:PageTitle encode_html="1"$>">
+<meta property="og:url" content="<$mt:PagePermalink encode_html="1"$>">
+<meta property="og:description" content="<$mt:PageExcerpt remove_html="1" encode_html="1"$>">
+<meta property="og:site_name" content="<$mt:BlogName encode_html="1"$>">
+<meta property="og:image" content="<mt:Assets type="image" tag="@SITE_ICON" limit="1"><$mt:AssetThumbnailURL width="320px" square="1" encode_html="1"$><mt:Else><$mt:BlogURL$>blogimg/og_image.png</mt:Assets>">
+<!-- Metadata -->
+<meta itemprop="description" content="<$mt:PageExcerpt remove_html="1"$>">
+<link itemprop="url" href="<$mt:PagePermalink encode_html="1"$>">
+<link itemprop="image" href="<mt:Assets type="image" tag="@SITE_ICON" limit="1"><$mt:AssetThumbnailURL width="320px" square="1" encode_html="1"$><mt:Else><$mt:BlogURL$>blogimg/og_image.png</mt:Assets>">
+
+<title><$mt:PageTitle encode_html="1"$>-<$mt:BlogName encode_html="1"$></title>
+
+</head>
+
+<body>
+
+<$mt:Include module="バナーヘッダー"$>
+
+<main class="col-sm-8 blog-main" role="main">
+
+<mt:Ignore>===================パンくず========================</mt:Ignore>
+<ul class="breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+<li><a href="<$mt:WebsiteURL$>">Home</a></li>
+<mt:SetVarBlock name="pagebasename"><$mt:PageBaseName$></mt:SetVarBlock>
+<mt:ParentFolder>
+<li><a href="<$mt:WebsiteURL$><$mt:FolderPath>/"><$mt:FolderLabel remove_html="1"$></a></li>
+</mt:ParentFolder>
+<mt:Unless name="pagebasename" eq="index">
+<mt:PageFolder>
+<li><a href="<$mt:WebsiteURL$><$mt:FolderPath$>/"><$mt:FolderLabel remove_html="1"$></a></li>
+</mt:PageFolder>
+</mt:Unless>
+<li><$mt:PageTitle$></li>
+</ul>
+<mt:Ignore>===================/ パンくず========================</mt:Ignore>
+
+<article id="page-<$mt:PageID$>" class="page">
+
+<mt:Ignore>===================article header========================</mt:Ignore>
+<header>
+<h1 class="section-title" itemprop="name"><$mt:PageTitle$></h1>
+</header>
+<mt:Ignore>===================/ article header========================</mt:Ignore>
+
+<div class="article-body" itemprop="text">
+<mt:If tag="PageBody">
+<$mt:PageBody replace="<br />","<br>" regex_replace="/<img([^>]+) \/>/g","<img$1>"$>
+</mt:If>
+
+<mt:If tag="PageMore" convert_breaks="0">
+<div id="more">
+<$mt:PageMore replace="<br />","<br>" regex_replace="/<img([^>]+) \/>/g","<img$1>"$>
+</div><!-- / more -->
+</mt:If>
+</div><!-- / article-body -->
+
+<mt:PageIfTagged>
+<div class="entry-tags">
+<h4 class="entry-tag-header">Tag</h4>
+<ul>
+<mt:EntryTags>
+<li><a href="<$mt:TagSearchLink include_blogs="site" include_with_website="1" encode_js="1"$>" rel="tag" title="タグ「<$mt:TagName>」の一覧"><span class="label label-default"><$mt:TagName></span></a></li>
+</mt:EntryTags>
+</ul>
+</div>
+</mt:PageIfTagged>
+
+<p>更新日: <time itemprop="dateModified" datetime="<$mt:PageModifiedDate format_name="iso8601"$>"><$mt:PageModifiedDate format="%x"$></time></p>
+
+</article>
+
+</main><mt:Ignore> /.blog-main </mt:Ignore>
+
+<$mt:include module="バナーフッター"$>
+
+</body>
+</html></mt:Unless>

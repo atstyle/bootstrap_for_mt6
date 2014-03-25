@@ -1,0 +1,12 @@
+<div class="sidebar-module">
+<h4>Search</h4>
+<form class="site-search" method="get" id="search" action="<$mt:CGIPath$><$mt:SearchScript$>">
+<input class="form-control" type="text" name="search" value="<$mt:SearchString$>" placeholder="検索...">
+<mt:If name="search_results">
+<input type="hidden" name="IncludeBlogs" value="<$mt:SearchIncludeBlogs$>">
+<mt:Else>
+<input type="hidden" name="IncludeBlogs" value="<$mt:BlogID$>">
+</mt:If>
+<input type="hidden" name="limit" value="<$mt:SearchMaxResults$>">
+</form>
+</div>

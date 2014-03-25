@@ -1,0 +1,19 @@
+<article id="comment-<$mt:CommentID$>" class="comment<mt:IfCommentParent> comment-reply</mt:IfCommentParent><mt:IfCommenterIsEntryAuthor> entry-author-comment</mt:IfCommenterIsEntryAuthor>">
+<header class="comment-header">
+<h4 class="asset-meta">
+<$mt:CommentAuthorIdentity regex_replace="/<img([^>]+) \/>/g","<img$1>"$>
+<mt:IfCommentParent>
+<$mt:CommentAuthorLink$>から<a href="<mt:CommentParent><$mt:CommentLink$></mt:CommentParent>"><mt:CommentParent><$mt:CommentAuthor$></mt:CommentParent></a>への返信
+<mt:Else>
+<span class="vcard author"><$mt:CommentAuthorLink$></span>
+</mt:IfCommentParent>
+<span class="comment-pubdate"><time datetime="<$mt:CommentDate format_name="iso8601"$>"><$mt:CommentDate format="%Y.%B.%e" regex_replace="/\s/",""$></time></span>
+<mt:IfCommentsAccepted>
+<$mt:CommentReplyToLink$>
+</mt:IfCommentsAccepted>
+</h4>
+</header>
+<div class="comment-content">
+<$mt:CommentBody$>
+</div>
+</article>

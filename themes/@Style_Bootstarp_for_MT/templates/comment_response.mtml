@@ -1,0 +1,54 @@
+<mt:If name="comment_confirmation">
+<$mt:Var name="page_title" value="確認"$>
+<$mt:Var name="message" value="<p>コメントを投稿しました。</p>"$>
+<mt:Else name="comment_pending">
+<$mt:Var name="page_title" value="コメントありがとうございます。"$>
+<$mt:Var name="message" value="<p>コメントは現在承認されるまで公開を保留されています。</p>"$>
+<mt:Else name="comment_error">
+<$mt:Var name="page_title" value="コメント投稿エラー"$>
+<mt:SetVarBlock name="message"><p>コメントを投稿できませんでした。エラー: <$mt:ErrorMessage$></p></mt:SetVarBlock>
+</mt:If>
+<mt:Unless regex_replace="/\s*\n+/g","\n">
+
+<!DOCTYPE html>
+<html lang="<$mt:BlogLanguage$>">
+<head>
+
+<$mt:include module="HTMLヘッダー"$>
+
+<title><$mt:Var name="page_title"$>-<$mt:BlogName encode_html="1"$></title>
+</head>
+
+<body>
+
+<$mt:Include module="バナーヘッダー"$>
+
+<main class="col-sm-8 blog-main" role="main">
+
+<mt:Ignore>===================パンくず========================</mt:Ignore>
+<ul class="breadcrumb">
+<li><a href="<$mt:WebsiteURL$>">ホーム</a></li>
+<li><$mt:Var name="page_title"$></li>
+</ul>
+<mt:Ignore>===================/ パンくず========================</mt:Ignore>
+
+<section>
+
+<header>
+<h1 class="blog-post-title"><$mt:Var name="page_title"$></h1>
+</header>
+
+<$mt:Var name="message"$>
+
+<footer>
+<p><a href="<mt:If name="comment_error">javascript:history.back()<mt:Else><$mt:EntryLink$></mt:If>">元の記事</a>に戻る</p>
+</footer>
+
+</section>
+
+</main><mt:Ignore> /.blog-main </mt:Ignore>
+
+<$mt:include module="バナーフッター"$>
+
+</body>
+</html></mt:Unless>

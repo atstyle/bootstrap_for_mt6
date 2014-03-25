@@ -1,0 +1,82 @@
+<form class="well form-horizontal" method="post" action="<$mt:CGIPath$><$mt:CommentScript$>" name="comments_form" id="comments-form" onsubmit="return mtCommentOnSubmit(this)">
+
+<input type="hidden" name="static" value="1">
+<input type="hidden" name="armor" value="1">
+<input type="hidden" name="entry_id" value="<$mt:EntryID$>">
+<input type="hidden" name="__lang" value="<$mt:BlogLanguage$>">
+<input type="hidden" name="parent_id" value="<$mt:CommentParentID escape="html"$>" id="comment-parent-id">
+<input type="hidden" name="preview" value="<mt:if name="comment_preview">1</mt:if>">
+<input type="hidden" name="sid" value="">
+
+<div id="comments-open-data">
+
+<div id="comment-form-name" class="control-group">
+<label for="comment-author" class="control-label">名前</label>
+<div class="controls">
+<input type="text" class="form-control" id="comment-author" name="author" size="30" tabindex="1" accesskey="n" value="<mt:If name="comment_preview"><$mt:CommentAuthor encode_html="1"$></mt:If>" onfocus="mtCommentFormOnFocus()" placeholder="お名前">
+</div>
+</div>
+
+<div id="comment-form-email" class="control-group">
+<label for="comment-email" class="control-label">電子メール</label>
+<div class="controls">
+<input type="email" class="form-control" id="comment-email" name="email" size="30" tabindex="2" accesskey="m" value="<mt:If name="comment_preview"><$mt:CommentEmail encode_html="1"$></mt:If>" onfocus="mtCommentFormOnFocus()" placeholder="電子メールアドレス">
+</div>
+</div>
+
+<div id="comment-form-url" class="control-group">
+<label for="comment-url" class="control-label">URL</label>
+<div class="controls">
+<input type="url" class="form-control" id="comment-url" name="url" size="30" tabindex="3" accesskey="u" value="<mt:If name="comment_preview"><$mt:CommentURL encode_html="1"$></mt:If>" onfocus="mtCommentFormOnFocus()" placeholder="ウェブサイトのURL">
+</div>
+</div>
+
+<div id="comment-form-remember-me" class="control-group">
+<label for="comment-bake-cookie" class="control-label">ログイン情報を記憶</label>
+<div class="controls">
+<input type="checkbox" id="comment-bake-cookie" name="bakecookie" onclick="mtRememberMeOnClick(this)" onkeypress="mtRememberMeOnClick(this)" value="1" tabindex="4" accesskey="r">
+</div>
+</div>
+
+</div>
+
+<div id="comment-form-reply" style="display:none" class="control-group">
+<label for="comment-reply" id="comment-reply-label" class="control-label"></label>
+<div class="controls">
+<input type="checkbox" id="comment-reply" name="comment_reply" value="" onclick="mtSetCommentParentID()" onkeypress="mtSetCommentParentID()" tabindex="5" accesskey="c">
+</div>
+</div>
+
+<div id="comments-open-text" class="control-group">
+<label for="comment-text" class="control-label">コメント
+<mt:IfAllowCommentHTML>(スタイル用のHTMLタグを使えます)</mt:IfAllowCommentHTML></label>
+<div class="controls">
+<textarea id="comment-text" class="form-control" name="text" rows="8" cols="50" onfocus="mtCommentFormOnFocus()" tabindex="6" accesskey="t" placeholder="コメントをどうぞ！"><mt:If name="comment_preview"><$mt:CommentBody autolink="0" sanitize="0" convert_breaks="0" encode_html="1"$></mt:If></textarea>
+</div>
+</div>
+
+<div class="captcha">
+<div id="comments-open-captcha"></div>
+</div>
+
+<div id="comments-open-footer" class="form-actions">
+
+<mt:If name="comment_preview">
+<input type="submit" accesskey="s" name="post" id="comment-submit" class="btn btn-primary" value="投稿" tabindex="7">
+<input type="submit" accesskey="v" name="preview_button" id="comment-preview"class="btn btn-primary" value="プレビュー" onclick="this.form.preview.value='1';" tabindex="8">
+<input type="button" name="cancel" id="comment-cancel" class="btn btn-primary" value="キャンセル" onclick="window.location='<$mt:EntryPermalink abs2rel="1"$>#comments-form'" tabindex="9">
+<mt:Else>
+<input type="submit" accesskey="s" name="post" id="comment-submit" class="btn btn-primary" value="投稿" tabindex="7">
+<input type="submit" accesskey="v" name="preview_button" id="comment-preview" class="btn btn-primary" value="プレビュー" onclick="this.form.preview.value='1';" tabindex="7">
+</mt:If>
+
+</div>
+
+</form>
+
+<script>
+<!--
+mtAttachEvent("load", mtEntryOnLoad);
+mtAttachEvent("unload", mtEntryOnUnload);
+//-->
+</script>

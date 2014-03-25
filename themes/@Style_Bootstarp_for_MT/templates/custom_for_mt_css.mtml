@@ -1,0 +1,337 @@
+<mt:Unless regex_replace="/\s*\n+/g","\n">
+
+@charset "<$MTPublishCharset$>";
+
+/* Globals */
+
+body {
+  font-family: Arial , Verdana , Helvetica , "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo , sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	clear: both;
+}
+/* blog-main*/
+
+.blog-title {
+	margin-top: 30px;
+	font-size: 42px;
+}
+
+.blog-description {
+	font-size: 16px;
+}
+
+.blog-main {
+	font-size: 15px;
+	line-height: 1.6;
+}
+
+.blog-post-title {
+	margin-bottom: 10px;
+	font-size: 26px;
+}
+
+.blog-post-meta {
+	font-size: 13px;
+}
+
+.asset-meta-list {
+	padding-left: 0;
+}
+
+.asset-meta-list li {
+	display: inline;
+}
+
+.asset-content {
+	margin-bottom: 40px;
+}
+
+h2, .h2 {
+	font-size: 26px;
+}
+
+h3, .h3 {
+	font-size: 22px;
+}
+
+h4, .h4 {
+    font-size: 18px;
+}
+
+img.mt-image-none {
+	margin: 0  0 20px 0;
+	max-width: 100%;
+	height: auto;
+	width /***/:auto;
+}
+
+img.mt-image-left {
+	float: left;
+	margin: 0 20px 20px 0;
+	max-width: 100%;
+	height: auto;
+	width /***/:auto;
+}
+
+img.mt-image-center {
+	display: block;
+	margin: 0 auto 20px;
+	max-width: 100%;
+	height: auto;
+	text-align: center;
+	width /***/:auto;
+}
+
+img.mt-image-right {
+	float: right;
+	margin: 0 0 20px 20px;
+	max-width: 100%;
+	height: auto;
+	width /***/:auto;
+}
+
+blockquote {
+	font-size: 14px;
+}
+
+.entry-more-link {
+	text-align: right;
+}
+
+.asset-footer {
+	clear: both;
+}
+
+.entry-categories {
+	margin-bottom: 20px;
+}
+
+.entry-tags {
+	clear: both;
+	margin-bottom: 20px;
+}
+
+.entry-tags .entry-tag-header {
+	display: inline;
+	font-size: 15px;
+}
+
+.entry-tags ul {
+	display: inline;
+	padding-left: 0;
+	list-style: none;
+}
+
+.entry-tags li {
+	display: inline;
+	margin-right: 5px;
+}
+
+.entry-tags a:hover , .entry-tags a:active {
+	text-decoration: none;
+}
+
+.pager {
+	text-align: center;
+	clear: both;
+}
+
+.trackbacks {
+	margin-bottom: 40px;
+}
+
+.control-label {
+	font-weight: normal;
+}
+
+.form-actions {
+	margin-top: 20px;
+}
+
+.comments h4 , .comments-open h4 , .trackbacks h4 {
+	font-size: 18px;
+}
+
+h4.asset-meta {
+	font-size: 14px;
+	line-height: 20px;
+}
+
+.comment {
+	margin-bottom: 20px;
+}
+
+div.asset-meta {
+	margin-top: 21px;
+	margin-bottom: 10.5px;
+}
+
+.comment-reply {
+	margin-left: 20px;
+}
+
+
+#comments-open-captcha {
+	margin-top: 20px;
+}
+
+.captcha .label, .captcha img {
+	display: block;
+	float: left;
+	margin-right: 10px;
+}
+
+.captcha .label {
+	min-height: 1.2em;
+	width: 80px;
+	background-color: rgba(0, 0, 0, 0);
+	color: #333333;
+	text-align: left;
+	text-shadow: none;
+}
+
+.field {
+	float: left;
+}
+
+#captcha_code {
+	clear: both;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.captcha p {
+	clear: both;
+}
+
+.form-actions {
+	clear: both;
+}
+
+#top-comment-nav, #comment-nav {
+	margin: 0 0 1em 0;
+	padding: 0;
+	width: 100%;
+	list-style: none;
+	text-align: center;
+}
+
+#top-comment-nav li, #comment-nav li {
+	display: inline;
+	padding: 0;
+}
+
+#top-prev-comments, #prev-comments {
+	margin: 0 1em 0 0;
+	text-align: left;
+}
+
+#top-next-comments, #next-comments {
+	margin: 0 0 0 1em;
+	text-align: right;
+}
+
+#top-num-comments, #num-comments {
+	text-align: center;
+}
+
+h2.commenter-label {
+	font-size: 15px;
+}
+
+#posts .dl-horizontal dt {
+    width: 3em;
+    text-align: left;
+}
+
+#posts .dl-horizontal dd {
+    margin-left: 3.5em;
+}
+
+/* Sidebar */
+
+.blog-sidebar {
+	margin-bottom: 40px;
+}
+
+.list-unstyled  li ol {
+	padding-left: 20px;
+}
+
+.list-unstyled  li li {
+	list-style: none;
+}
+
+.folder_label {
+	font-weight: bold;
+}
+
+.folder_label ol {
+	font-weight: normal;
+}
+
+.photo {
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+
+.photo ol {
+	margin-left: 0;
+	padding: 0;
+}
+
+.photo li {
+	display: inline-block;
+	overflow: hidden;
+	margin-bottom: 5px;
+	width: 70px;
+	height: 70px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.tags {
+	padding-left: 0;
+}
+
+.tags > li {
+	display: inline;
+	line-height: 1.2;
+}
+
+li.level1 {
+	font-size: 180%;
+}
+
+li.level2 {
+	font-size: 160%;
+}
+
+li.level3 {
+	font-size: 130%;
+}
+
+li.level4 {
+	font-size: 120%;
+}
+
+li.level5 {
+	font-size: 100%;
+}
+
+li.level6 {
+	font-size: 80%;
+}
+
+/* footer */
+.blog-footer ul {
+	padding-left: 0;
+}
+
+.blog-footer li {
+	display: inline-block;
+}
+
+</mt:Unless>

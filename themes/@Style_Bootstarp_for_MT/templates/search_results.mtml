@@ -1,0 +1,165 @@
+<mt:Unless regex_replace="/\s*\n+/g","\n">
+
+<!DOCTYPE html>
+<html lang="<$mt:BlogLanguage$>">
+<head>
+
+<$mt:include module="HTMLヘッダー"$>
+
+<script src="<$mt:Link template="javascript"$>"></script>
+<script type="text/javascript">
+var user = <$mt:UserSessionState$>;
+</script>
+
+<title><$mt:BlogName encode_html="1"$> - 検索結果</title>
+
+<script>
+<mt:IfMoreResults>
+function getResults(page) {
+page = parseInt(page);
+if (timer) window.clearTimeout(timer);
+var xh = mtGetXmlHttp();
+if (!xh) return false;
+var res = results[page];
+if (!res) return;
+var url = res['next_url'];
+if (!url) return;
+
+xh.open('GET', url + '&format=js', true);
+xh.onreadystatechange = function() {
+if ( xh.readyState == 4 ) {
+if ( xh.status && ( xh.status != 200 ) ) {
+// error - ignore
+} else {
+try {
+var page_results = eval("(" + xh.responseText + ")");
+if ( page_results['error'] == null )
+results[page + 1] = page_results['result'];
+} catch (e) {
+}
+}
+}
+};
+xh.send(null);
+}
+
+function swapContent(direction) {
+if ( direction == undefined ) direction = 1;
+var page_span = document.getElementById('current-page');
+if (!page_span) return true;
+var next_page = direction + parseInt(page_span.innerHTML);
+var res = results[next_page];
+if (!res) return true;
+var content = res['content'];
+if (!content) return true;
+var div = document.getElementById('search-results-main');
+if (!div) return true;
+div.innerHTML = content;
+timer = window.setTimeout("getResults(" + next_page + ")", 1*1000);
+window.scroll(0, 0);
+return false;
+}
+<mt:Else>
+<mt:IfPreviousResults>
+function swapContent(direction) {
+return true;
+}
+</mt:IfPreviousResults>
+</mt:IfMoreResults>
+</script>
+
+</head>
+
+<$mt:include module="バナーヘッダー"$>
+
+<main class="col-sm-8 blog-main" role="main">
+
+<mt:Ignore>===================パンくず========================</mt:Ignore>
+<ul class="breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+<li><a href="<mt:BlogParentWebsite><$mt:WebsiteURL$></mt:BlogParentWebsite>">Home</a></li>
+<li>検索結果</li>
+</ul>
+<mt:Ignore>===================/ パンくず========================</mt:Ignore>
+
+<mt:SetVarTemplate id="search_results" name="search_results">
+<mt:SearchResults>
+<mt:SearchResultsHeader>
+<section id="search-results">
+<span id="current-page" class="hidden"><$mt:CurrentPage$></span>
+<h1 class="blog-post-title">
+<mt:IfStraightSearch>
+「<$mt:SearchString$>」と一致するもの
+</mt:IfStraightSearch>
+<mt:IfTagSearch>
+タグ「<$mt:SearchString$>」が付けられているもの
+</mt:IfTagSearch>
+</h1>
+<hr>
+</mt:SearchResultsHeader>
+
+<$mt:Include module="記事の概要" hide_counts="1"$>
+
+<mt:SearchResultsFooter>
+</section>
+
+<ul class="pager">
+<mt:IfMoreResults>
+<li class="previous"><a rel="prev" href="<$mt:NextLink encode_html="1"$>" onclick="return swapContent();">過去の記事</a></li>
+</mt:IfMoreResults>
+<mt:IfPreviousResults>
+<li class="next"><a rel="next" href="<$mt:PreviousLink encode_html="1"$>" onclick="return swapContent(-1);">新しい記事</a></li>
+</mt:IfPreviousResults>
+</ul>
+
+</mt:SearchResultsFooter>
+</mt:SearchResults>
+</mt:SetVarTemplate>
+
+<$mt:Var name="search_results"$>
+
+<mt:NoSearchResults>
+<section>
+<h1 class="blog-post-title">
+<mt:IfStraightSearch>
+「<$mt:SearchString$>」と一致するもの
+</mt:IfStraightSearch>
+<mt:IfTagSearch>
+タグ「<$mt:SearchString$>」が付けられているもの
+</mt:IfTagSearch>
+</h1>
+<hr>
+<p>「<$mt:SearchString$>」と一致する結果は見つかりませんでした。</p>
+</section>
+</mt:NoSearchResults>
+
+<mt:NoSearch>
+<section>
+<h1 class="blog-post-title search-results-header">例</h1>
+<p>すべての単語が順序に関係なく検索されます。フレーズで検索したいときは引用符で囲んでください。</p>
+<pre><code>"movable type"</code></pre>
+<p>AND、OR、NOTを入れることで論理検索を行うこともできます。</p>
+<pre><code>個人 OR 出版</code></pre>
+<pre><code>個人 NOT 出版</code></pre>
+</section>
+</mt:NoSearch>
+
+<mt:Ignore><!-- Used with the ajax search capability of the new search class --></mt:Ignore>
+<mt:IfMoreResults>
+<script type="text/javascript">
+var div = document.getElementById('search-results');
+var results = {
+'<$mt:CurrentPage$>': {
+'content': div.innerHTML,
+'next_url': '<$mt:NextLink$>'
+}
+};
+var timer = window.setTimeout("getResults(" + <$mt:CurrentPage$> + ")", 1*1000);
+</script>
+</mt:IfMoreResults>
+
+</main><mt:Ignore> /.blog-main </mt:Ignore>
+
+<$mt:include module="バナーフッター"$>
+
+</body>
+</html></mt:Unless>

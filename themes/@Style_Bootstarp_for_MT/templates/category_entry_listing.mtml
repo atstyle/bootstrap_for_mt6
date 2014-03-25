@@ -1,0 +1,69 @@
+<mt:Unless regex_replace="/\s*\n+/g","\n">
+
+<$mt:Var name="entries_per_page" value="10"$>
+
+<mt:SetVarBlock name="search_link">
+    <$mt:CGIPath$><$mt:SearchScript$>?IncludeBlogs=<$mt:BlogID$>
+    &template_id=<$mt:BuildTemplateID$>
+    &limit=<$mt:Var name="entries_per_page"$>
+    &archive_type=<$mt:ArchiveType$>
+    &category=<$mt:CategoryID$>
+    &page=
+</mt:SetVarBlock>
+
+<$mt:Var name="search_link" strip="" trim="1" encode_html="1" setvar="search_link"$>
+
+<!DOCTYPE html>
+<html lang="<$mt:BlogLanguage$>">
+<head>
+
+<$mt:include module="HTMLヘッダー"$>
+
+<!-- Open Graph Protocol -->
+<mt:IfArchiveType archive_type="Category">
+<meta property="og:title" content="<$mt:CategoryLabel$>">
+<meta property="og:url" content="<$mt:CategoryArchiveLink$>">
+<meta property="og:image" content="<$mt:BlogURL$>blogimg/og_image.png">
+<meta property="og:description" content="<$mt:ArchiveTitle$> <$mt:CategoryDescription$>">
+</mt:IfArchiveType>
+
+<title><$mt:ArchiveTitle$>-<$mt:BlogName encode_html="1"$>-<mt:BlogParentWebsite><$mt:BlogName encode_html="1"$></mt:BlogParentWebsite></title>
+
+</head>
+
+<body>
+
+<$mt:include module="バナーヘッダー"$>
+
+<main class="col-sm-8 blog-main" role="main">
+
+<mt:Ignore>===================パンくず========================</mt:Ignore>
+<ul class="breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+<li><a href="<mt:BlogParentWebsite><$mt:WebsiteURL$></mt:BlogParentWebsite>">Home</a></li>
+<mt:HasNoParentCategory>
+<li><$mt:CategoryLabel$></li>
+</mt:HasNoParentCategory>
+<mt:HasParentCategory>
+<mt:TopLevelParent>
+<li><a href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel$></a></li>
+</mt:TopLevelParent>
+<li><$mt:CategoryLabel$></li>
+</mt:HasParentCategory>
+</ul>
+<mt:Ignore>===================/ パンくず========================</mt:Ignore>
+
+<mt:Ignore>===================記事リスト========================</mt:Ignore>
+
+<mt:Entries limit="$entries_per_page" search_results="1">
+<$mt:include module="記事の概要"$>
+</mt:Entries>
+<$mt:Include module="ページネーション"$>
+
+<mt:Ignore>====================/ 記事リスト=======================</mt:Ignore>
+
+</main><mt:Ignore> /.blog-main </mt:Ignore>
+
+<$mt:include module="バナーフッター"$>
+
+</body>
+</html></mt:Unless>

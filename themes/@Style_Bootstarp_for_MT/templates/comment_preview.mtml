@@ -1,0 +1,48 @@
+<mt:SetVarBlock name="page_title">プレビュー - <$mt:BlogName encode_html="1"$></mt:SetVarBlock>
+<mt:Unless regex_replace="/\s*\n+/g","\n">
+<!DOCTYPE html>
+<html lang="<$mt:BlogLanguage$>">
+<head>
+
+<$mt:include module="HTMLヘッダー"$>
+<title><$mt:Var name="page_title"$></title>
+<script>
+var user = <$mt:UserSessionState$>;
+var is_preview = true;
+</script>
+<script src="<$mt:Link template="javascript"$>"></script>
+</head>
+
+<body>
+
+<$mt:include module="バナーヘッダー"$>
+
+<main class="col-sm-8 blog-main" role="main">
+
+<mt:Ignore>===================パンくず========================</mt:Ignore>
+<ul class="breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+<li><a href="<mt:BlogParentWebsite><$mt:WebsiteURL$></mt:BlogParentWebsite>">Home</a></span></li>
+<li class="breadcrumb-list-item"><$mt:EntryTitle$></li>
+</ul>
+<mt:Ignore>===================/ パンくず========================</mt:Ignore>
+</mt:Unless>
+
+<section>
+<h1 class="blog-post-title">コメントのプレビュー</h1>
+<article id="comment-<$mt:CommentID$>" class="comment<mt:IfCommentParent> comment-reply</mt:IfCommentParent><mt:IfCommenterIsEntryAuthor> entry-author-comment</mt:IfCommenterIsEntryAuthor>">
+<header>
+<h2 class="commenter-label"><mt:IfCommentParent><$mt:CommentAuthorLink$>から<a href="<mt:CommentParent><$mt:CommentLink$></mt:CommentParent>"><mt:CommentParent><$mt:CommentAuthor$></mt:CommentParent></a>への返信<mt:Else><$mt:CommentAuthorLink$></mt:IfCommentParent></h2>
+<a href="<$mt:CommentLink$>"><time datetime="<$mt:CommentDate format_name="iso8601"$>"><$mt:CommentDate$></time></a>
+</header>
+<$mt:CommentBody$>
+</article>
+<$mt:Include module="コメント入力フォーム"$>
+</section>
+
+<mt:Unless regex_replace="/\s*\n+/g","\n">
+</main><mt:Ignore> /.blog-main </mt:Ignore>
+
+<$mt:include module="バナーフッター"$>
+
+</body>
+</html></mt:Unless>

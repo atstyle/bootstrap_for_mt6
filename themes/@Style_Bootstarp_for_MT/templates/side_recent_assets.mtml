@@ -1,0 +1,18 @@
+<mt:If name="main_index">
+<mt:If tag="BlogEntryCount" include_blogs="children" include_with_website="1">
+<div class="sidebar-module">
+<h4>Photos</h4>
+
+<div class="photo">
+<$mt:setvar name="counter" value="0"$><mt:Entries lastn="0" include_blogs="children" include_with_website="1"><mt:EntryAssets type="image" lastn="1"><$mt:setvar name="counter" op="++"$><mt:SetVarBlock name="EntDate"><$mt:EntryDate format_name="iso8601"$></mt:SetVarBlock><mt:SetVarBlock name="EntryLink[$counter]"><$mt:EntryPermalink$></mt:SetVarBlock><mt:SetVarBlock name="ImageCode[$counter]"><img src="<$mt:AssetThumbnailURL height="70" square="1"$>" alt="<$mt:EntryTitle$>" title="「<$mt:EntryTitle$>」on「<$mt:BlogName$>」" width="70" height="70" class="thumbnail"></mt:SetVarBlock></mt:EntryAssets><mt:SetHashVar name="Compare"><mt:SetVarBlock name="$EntDate"><a href="<mt:GetVar name="EntryLink[$counter]">"><mt:GetVar name="ImageCode[$counter]"></a></mt:SetVarBlock></mt:SetHashVar></mt:Entries>
+<mt:Setvar name="CountB" value="0"><mt:If name="counter" ge="1"><ol>
+<mt:Loop name="Compare" sort_by="key reverse"><mt:If name="CountB" lt="4"><mt:Setvar name="CountB" op="++">
+<li><mt:GetVar name="__value__"></li></mt:If>
+</mt:Loop>
+</ol>
+</mt:If>
+</div>
+
+</div>
+</mt:If>
+</mt:If>

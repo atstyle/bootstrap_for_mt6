@@ -1,0 +1,39 @@
+<article id="entry-<$mt:EntryID$>" class="blog-post entry-asset entry asset hentry" itemscope itemType="http://schema.org/BlogPosting">
+
+<h1 class="blog-post-title entry-title" itemprop="name"><a href="<$mt:EntryPermalink encode_html="1"$>" rel="bookmark"><$mt:EntryTitle$></a></h1>
+
+<footer class="asset-meta blog-post-meta">
+<ul class="asset-meta-list">
+<li class="asset-meta-list-item">投稿日:<time datetime="<$mt:EntryDate format_name="iso8601"$>" itemprop="datePublished"><$mt:EntryDate format="%x"$></time></li>
+<li class="asset-meta-list-item">更新日:<time datetime="<$mt:EntryModifiedDate format_name="iso8601"$>" itemprop="dateModified"><$mt:EntryModifiedDate format="%x"$></time></li>
+<li class="asset-meta-list-item">by <span class="author entry-author vcard"><$mt:EntryAuthorLink show_hcard="1"$></span></li>
+<mt:IfArchiveTypeEnabled archive_type="Category">
+<mt:If tag="EntryPrimaryCategory">
+<li class="asset-meta-list-item">Category: <mt:EntryPrimaryCategory><a itemprop="articleSection" rel="tag" href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel$></a></mt:EntryPrimaryCategory></li>
+</mt:If>
+</mt:IfArchiveTypeEnabled>
+</ul>
+</footer>
+
+<mt:If tag="EntryBody">
+<div class="asset-body" itemprop="articleBody">
+<$mt:EntryBody replace="<br />","<br>" regex_replace="/<img([^>]+) \/>/g","<img$1>"$>
+</div>
+</mt:If>
+
+<mt:EntryIfTagged>
+<div class="entry-tags">
+<h4 class="entry-tag-header">Tag</h4>
+<ul>
+<li><mt:EntryTags glue='</li> <li>'><a href="javascript:void(0)" onclick="location.href='<$mt:TagSearchLink encode_js="1"$>';return false;" rel="tag"><span class="label label-default"><$mt:TagName$></span></a></mt:EntryTags></li>
+</ul>
+</div>
+</mt:EntryIfTagged>
+
+<mt:If tag="EntryMore" convert_breaks="0">
+<div class="entry-more-link">
+<a href="<$mt:EntryPermalink encode_html="1"$>" itemprop="url" class="btn btn-primary">ブログ記事を読む</a>
+</div>
+</mt:If>
+
+</article>

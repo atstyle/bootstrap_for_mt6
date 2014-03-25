@@ -1,0 +1,20 @@
+<mt:IfArchiveTypeEnabled archive_type="Category">
+<div class="sidebar-module">
+<h4>Categories</h4>
+<mt:TopLevelCategories>
+<mt:SubCatIsFirst>
+<ol class="list-unstyled">
+</mt:SubCatIsFirst>
+<mt:If tag="CategoryCount">
+<li><a href="<$mt:CategoryArchiveLink$>"<mt:If tag="CategoryDescription"> title="<$mt:CategoryDescription remove_html="1" encode_html="1"$>"</mt:If>><$mt:CategoryLabel$> (<$mt:CategoryCount$>)</a>
+<mt:Else>
+<li><$mt:CategoryLabel$>
+</mt:If>
+<$mt:SubCatsRecurse$>
+</li>
+<mt:SubCatIsLast>
+</ol>
+</mt:SubCatIsLast>
+</mt:TopLevelCategories>
+</div>
+</mt:IfArchiveTypeEnabled>
