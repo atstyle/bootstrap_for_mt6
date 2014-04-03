@@ -13,6 +13,15 @@ bootstrap_for_mt6
 * Movable Type 6 のウェブサイト・ブログの両方で利用可能です。
 
 =================
+###カスタマイズ
+
+新しいナビゲーションメニューを追加する  http://atstyle.biz/blog/archives/2014/04/02/0938/
+
+og:imageを設定する  http://atstyle.biz/blog/archives/2014/04/02/1714/
+
+ナビゲーションバーをFixed navbarにカスタマイズする  http://atstyle.biz/blog/a
+
+=================
 
 ###オリジナル 無料テンプレート利用規約
 
