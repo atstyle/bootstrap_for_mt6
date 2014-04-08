@@ -21,6 +21,10 @@ og:imageを設定する   http://atstyle.biz/blog/archives/2014/04/02/1714/
 
 ナビゲーションバーをFixed navbarにカスタマイズする   http://atstyle.biz/blog/archives/2014/04/03/1520/
 
+記事にキーワードを出力する   http://atstyle.biz/blog/archives/2014/04/08/1522/
+
+Zenbackを設定する   http://atstyle.biz/blog/archives/2014/04/08/1644/
+
 =================
 
 ###オリジナル 無料テンプレート利用規約
