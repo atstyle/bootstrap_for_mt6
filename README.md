@@ -15,6 +15,8 @@ bootstrap_for_mt6
 =================
 ###カスタマイズ
 
+Font Awesomeのアイコンを追加する  http://atstyle.biz/blog/archives/2014/04/01/1727/
+
 新しいナビゲーションメニューを追加する   http://atstyle.biz/blog/archives/2014/04/02/0938/
 
 og:imageを設定する   http://atstyle.biz/blog/archives/2014/04/02/1714/
@@ -24,6 +26,8 @@ og:imageを設定する   http://atstyle.biz/blog/archives/2014/04/02/1714/
 記事にキーワードを出力する   http://atstyle.biz/blog/archives/2014/04/08/1522/
 
 Zenbackを設定する   http://atstyle.biz/blog/archives/2014/04/08/1644/
+
+BootswatchのCSSを適用する  http://atstyle.biz/blog/archives/2014/04/22/1240/
 
 =================
 
