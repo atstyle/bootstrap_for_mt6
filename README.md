@@ -1,6 +1,6 @@
 # bootstrap_for_mt6
 
-[![](http://atstyle.biz/blog/images/free_01.png)](http://atstyle.biz/mt6_bootstrap/free_01//)
+[![](http://atstyle.biz/blog/images/free_01.png)](http://atstyle.biz/mt6_bootstrap/free_01/)
 
 - - -
 
