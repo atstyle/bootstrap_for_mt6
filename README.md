@@ -27,7 +27,7 @@
 
 - ナビゲーションバーをFixed navbarにカスタマイズする   http://atstyle.biz/blog/archives/2014/04/03/1520/
 
-1. 記事にキーワードを出力する   http://atstyle.biz/blog/archives/2014/04/08/1522/
+- 記事にキーワードを出力する   http://atstyle.biz/blog/archives/2014/04/08/1522/
 
 - Zenbackを設定する   http://atstyle.biz/blog/archives/2014/04/08/1644/
 
