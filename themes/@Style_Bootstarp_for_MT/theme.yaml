@@ -1,12 +1,12 @@
 ---
-id: @Style_Bootstarp_for_MT
-label: @Style Bootstarp Theme for Movable Type
-name: @Style Bootstarp Theme for Movable Type
+id: "@Style_Bootstarp_for_MT"
+label: "@Style Bootstarp Theme for Movable Type"
+name: "@Style Bootstarp Theme for Movable Type"
 version: 1.0
-author_link: 'http://atstyle.biz/theme_temp/free/mt6_bootstrap_01/'
+author_link: "http://atstyle.biz/theme_temp/free/mt6_bootstrap_01/"
 author_name: "@Style"
 class: blog
-description: 'The official template of creating a blog with Bootstrap for Movable Type'
+description: "The official template of creating a blog with Bootstrap for Movable Type"
 thumbnail_file: thumb.png
 thumbnail_file_medium: thumb-medium.png
 thumbnail_file_small: thumb-small.png
@@ -29,7 +29,7 @@ elements:
         title: About
         text: |
           <p>Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-        tags: @about
+        tags: "@about"
         folder: About
 
   template_set:
